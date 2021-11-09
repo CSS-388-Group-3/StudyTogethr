@@ -89,12 +89,11 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 
 ## Wireframes
 <img src=figma_wireframe.png width=600>
-<img src=figma_walkthrough.gif width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-
+<img src=figma_wireframe.png width=600>
 ### [BONUS] Interactive Prototype
-
+<img src=figma_walkthrough.gif width=600>
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
