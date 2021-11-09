@@ -88,7 +88,7 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 * Profile -> view profile status, logout
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
+<img src=figma_wireframe.png width=600>
 <img src=figma_walkthrough.gif width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
