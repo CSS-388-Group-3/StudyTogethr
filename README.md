@@ -188,9 +188,47 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
     });
     ```
   * (Update/PUT)
-   
+    ```Java
+    ParseQuery<ParseObject> query = ParseQuery.getQuery(Post.class);
+    // Retrieve the object by id
+    query.getInBackground("HMcTr9rD3s", new GetCallback<ParseObject>() {
+    	public void done(ParseObject user, ParseException e) {
+    		if (e == null) {
+    		// Update with new data will get sent to the Parse Cloud
+      		user.put("image", imageVariable);
+      		user.put("description", "this is a new description for the post");
+      		user.saveInBackground();
+    		} else {
+      			// Failed
+     		}
+    	}
+    });
+    ```
   * (Delete) 
-  
+    ```Java
+    ParseQuery<ParseObject> post= ParseQuery.getQuery(Post.class);
+    // Query parameters based on the item name
+    Post.whereEqualTo("objectId", "HMcTr9rD3s");
+    Post.findInBackground(new FindCallback<ParseObject>() {
+    	@Override
+    	public void done(final List<ParseObject> post, ParseException e) {
+        	if (e == null) {
+                	post.get(0).deleteInBackground(new DeleteCallback() {
+          			@Override
+        			public void done(ParseException e) {
+          				if (e == null) {
+            					//Deleted successfully
+          				} else {
+            					//Unsuccessful delete
+          				}
+        			}
+      			});
+    		} else {
+      			Log.e("Activity", "Something went wrong", e);
+    		}
+	}
+    });
+    ```
 * Compose Notes
   * (Create/POST) Create new Post object
     ```Java
