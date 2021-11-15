@@ -97,18 +97,123 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 ## Schema 
 ### Models
 #### User
+| Property | Type | Description |
+| --- | --- | --- |
+| `objectId` | String | Unique id for user field (default field) |
+| `updatedAt` | Date | Date and time the user was last updated |
+| `createdAt` | Date | Date and time the user was created |
+| `username` | String | Username of the user |
+| `password` | String | Hashed password of the user |
+| `emailVerified` | Boolean | True if the user’s email was verified |
+| `email` | String | Email address of the user |
 
-   | Property      | Type     | Description |
-   | ------------- | -------- | ------------|
-   | objectId      | String   | unique id for the user post (default field) |
-   | updatedAt        | Date| image author |
-   | createdAt         | Date     | image that user posts |
-   | username       | String   | image caption by author |
-   | password | String   | number of comments that has been posted to an image |
-   | emailVerified    | Boolean   | number of likes for the post |
-   | email     | String | date when post is created (default field) |
+#### Post
+| Property | Type | Description |
+| --- | --- | --- |
+| `objectId` | String | Unique id for Post field (default field) |
+| `updatedAt` | Date | Date and time the Post was last updated |
+| `createdAt` | Date | Date and time the Post was created |
+| `description` | String | Description of the Post |
+| `image` | File | Image file of the Post |
+| `user` | Pointer | User who created the Post |
+| `class_professor` | String | Class and professor name |
+| `class_folder` | String | Name of categorized notes within a class |
+
+#### Session
+| Property | Type | Description |
+| --- | --- | --- |
+| `objectId` | String | Unique id for Session field (default field) |
+| `sessionToken` | String | Token associated with the User’s session |
+| `user` | Pointer | The User that the session is associated with |
+| `createdAt` | Date | Date and time the Session was created |
+| `updatedAt` | Date | Date and time the Session was last updated |
+| `expiresAt` | Date | Date and time that the User’s session expires |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### List of network requests by screen
+* Register
+  * (Create/POST) New user account 
+    ```Java
+    //Valid-email verification 
+    user.setUsername(username);
+    user.setPassword(password);
+    // Invoke signUpInBackground
+    user.signUpInBackground(new SignUpCallback() {
+        public void done(ParseException e) {
+            if (e == null) {
+	              //go to Login
+                //Register Success
+            } 
+            else {
+                //Unsuccessful register attempt
+                return;
+            }
+        }
+    });
+    ```
+* Login
+  * (Read/GET) 
+    ```Java
+    ParseUser.logInInBackground(username, password, new LogInCallback() {
+        @Override
+        public void done(ParseUser user, ParseException e) {
+            if (e != null) {
+                //Unsuccessful login attempt
+                return;
+            }
+	              //go to home screen
+                //Login Success
+        }
+    });
+    ```
+* Notes
+  * (Read/GET) Query all posts from user
+    ```Java
+    ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+    query.include(Post.KEY_USER);
+    query.setLimit(20);
+    query.addDescendingOrder(Post.KEY_CREATED_KEY);
+    query.findInBackground(new FindCallback<Post>() {
+        @Override
+        public void done(List<Post> posts, ParseException e) {
+            if(e != null ){
+                //unsuccessful in retrieving posts
+                return;
+            }
+            for(Post post:posts){
+                //successful in retrieving posts
+                adapter.notifyDataSetChanged();
+            }
+        }
+    });
+    ```
+  * (Update/PUT)
+   
+  * (Delete) 
+  
+* Compose Notes
+  * (Create/POST) Create new Post object
+    ```Java
+    Post post = new Post();
+    post.setDescription(description);
+    post.setImage(new ParseFile(photoFile));
+    //set other post attributes
+    post.saveInBackground(new SaveCallback() {
+        @Override
+        public void done(ParseException e) {
+            if (e != null) {
+                //unsuccessful post save
+            }
+                //Successful post save
+                //reset other post attributes
+	              //go to posts stream 
+        }
+    });
+    ```
+* Profile-Logout
+  ```Java
+  ParseUser.logOut();
+  ParseUser currentUser = ParseUser.getCurrentUser();
+  //Go to Login screen
+  //Logout successful
+  ```
