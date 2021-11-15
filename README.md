@@ -93,10 +93,21 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 <img src=figma_wireframe.png width=600>
 ### [BONUS] Interactive Prototype
 <img src=figma_walkthrough.gif width=600>
+
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+#### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | updatedAt        | Date| image author |
+   | createdAt         | Date     | image that user posts |
+   | username       | String   | image caption by author |
+   | password | String   | number of comments that has been posted to an image |
+   | emailVerified    | Boolean   | number of likes for the post |
+   | email     | String | date when post is created (default field) |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
