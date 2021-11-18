@@ -27,24 +27,24 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 
 **Required Must-have Stories**
 
-* Email verification
-* Back4app backend
-* Create different classes categories
-* Professor categories within class categories
-* Organize notes by category
-* Upload pictures of notes to the classes
-* Navigation bar to go between different classes and groups of files in the class
-* Professor/student roles
-* Lock app during exam time
+- [ ] Email verification
+- [ ] Back4app backend
+- [ ] Create different classes categories
+- [ ] Professor categories within class categories
+- [ ] Organize notes by category
+- [ ] Upload pictures of notes to the classes
+- [ ] Navigation bar to go between different classes and groups of files in the class
+- [ ] Professor/student roles
+- [ ] Lock app during exam time
 
 
 **Optional Nice-to-have Stories**
 
-* Verify njit email
-* Report system
-* Upload other file types (voice/video recording, files)
-* Upload multiple files
-* Class chat window
+- [ ] Verify njit email
+- [ ] Report system
+- [ ] Upload other file types (voice/video recording, files)
+- [ ] Upload multiple files
+- [ ] Class chat window
 
 
 ### 2. Screen Archetypes
