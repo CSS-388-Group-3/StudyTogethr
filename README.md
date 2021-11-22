@@ -28,7 +28,7 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 **Required Must-have Stories**
 
 - [ ] Email verification
-- [ ] Back4app backend
+- [x] Back4app backend
 - [ ] Create different classes categories
 - [ ] Professor categories within class categories
 - [ ] Organize notes by category
