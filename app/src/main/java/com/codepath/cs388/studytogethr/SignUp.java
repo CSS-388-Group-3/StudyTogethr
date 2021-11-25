@@ -38,7 +38,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = etEmail.getText().toString();
-                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                String emailPattern = "[a-zA-Z0-9._-]+@njit.edu";
                 if (email.matches(emailPattern) && email.length() > 0) {
                     ParseUser user = new ParseUser();
                     user.setEmail(email);
