@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
-                        //fragment = new PostsFragment();
+                        Toast.makeText(MainActivity.this, "Class List!", Toast.LENGTH_SHORT).show();
+                        //fragment = new ClassListFragment();
                         break;
                     case R.id.action_compose:
                         Toast.makeText(MainActivity.this, "Compose Notes!", Toast.LENGTH_SHORT).show();
