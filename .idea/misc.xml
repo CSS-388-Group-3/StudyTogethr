@@ -5,12 +5,17 @@
       <map>
         <entry key="..\:/Users/Cristian/Desktop/Codepath/StudyTogethr/app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="..\:/Users/Cristian/Desktop/Codepath/StudyTogethr/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+<<<<<<< HEAD
         <entry key="..\:/Users/Cristian/Desktop/Codepath/StudyTogethr/app/src/main/res/layout/activity_sign_up.xml" value="0.3307291666666667" />
+=======
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.24259259259259258" />
+>>>>>>> 4c61744674dbe515fe416e81a7a01cdaae1d5ca3
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.26944444444444443" />
+        <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.44282068403773084" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
