@@ -3,7 +3,6 @@ package com.codepath.cs388.studytogethr;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
-                    case R.id.action_home:
+                    case R.id.action_classList:
                         Toast.makeText(MainActivity.this, "Class List!", Toast.LENGTH_SHORT).show();
                         //fragment = new ClassListFragment();
                         break;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Set default selection
-        bottomNavigationView.setSelectedItemId(R.id.action_home);
+        bottomNavigationView.setSelectedItemId(R.id.action_classList);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

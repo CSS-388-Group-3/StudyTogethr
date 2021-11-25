@@ -55,6 +55,9 @@ public class SignUp extends AppCompatActivity {
                             }
                             Log.i(TAG, "Sign up was successful");
                             Toast.makeText(SignUp.this, "Signup Successful. Please login", Toast.LENGTH_SHORT).show();
+                            etEmail.getText().clear();
+                            etUsername.getText().clear();
+                            etPassword.getText().clear();
                         }
                     });
                 }

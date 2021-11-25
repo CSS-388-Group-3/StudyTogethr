@@ -16,7 +16,7 @@
         android:layout_marginTop="150dp"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="Username" />
+        android:hint="Username or Email" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -26,17 +26,26 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
+
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:backgroundTint="@color/njit_blue"
         android:text="Login" />
 
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="register" />
+
+        android:background="@android:color/transparent"
+        android:capitalize="none"
+        android:fontFamily="@font/arsenal"
+        android:text="No account? Register here!"
+        android:textAllCaps="false"
+        android:textColor="#1E88E5" />
+
+
 </LinearLayout>

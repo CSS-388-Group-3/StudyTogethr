@@ -3,6 +3,7 @@ package com.codepath.cs388.studytogethr;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnSignUp = findViewById(R.id.btnSignUp);
+        btnSignUp.setPaintFlags(btnSignUp.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
