@@ -10,13 +10,13 @@ import android.widget.Button;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
+    Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnLogout = findViewById(R.id.btnLogout);
-
+        btnLogout = findViewById(R.id.btnLogout);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

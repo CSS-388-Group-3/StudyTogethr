@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +18,8 @@ import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String  TAG = "LoginActivity";
-    private EditText etUsername;
     private EditText etPassword;
+    private EditText etUsername;
     private Button btnLogin;
     private Button btnSignUp;
 
@@ -41,34 +42,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "onClick login button");
                 String username = etUsername.getText().toString();
-                String password =etPassword.getText().toString();
-                loginUser(username,password);
+                String password = etPassword.getText().toString();
+                loginUser(username, password);
             }
         });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseUser user = new ParseUser();
-                user.setUsername(etUsername.getText().toString());
-                user.setPassword(etPassword.getText().toString());
-                user.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e != null){
-                            Log.e(TAG, "Error signing up user", e);
-                            return;
-                        }
-                        Log.i(TAG, "Sign up was successful");
-                        goMainActivity();
-                    }
-                });
+                goSignup();
             }
         });
     }
 
     private void loginUser(String username, String password) {
-        Log.i(TAG, "trying to log in user " + username + " with pass " + password);
+        Log.i(TAG, "trying to log in user with email " + username + " and pass " + password);
         // verify login and go to main activity
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
@@ -82,6 +70,13 @@ public class LoginActivity extends AppCompatActivity {
                 goMainActivity();
             }
         });
+    }
+
+    private void goSignup(){
+        Intent i = new Intent(this, SignUp.class);
+        i.putExtra("username",  etUsername.getText().toString());
+        startActivity(i);
+        finish();
     }
 
     private void goMainActivity() {
