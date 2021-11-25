@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -49,15 +50,17 @@ public class SignUp extends AppCompatActivity {
                         public void done(ParseException e) {
                             if (e != null) {
                                 Log.e(TAG, "Error signing up user", e);
+                                Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             Log.i(TAG, "Sign up was successful");
-                            goMainActivity();
+                            Toast.makeText(SignUp.this, "Signup Successful. Please login", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
                 else {
                     Log.e(TAG, "email doesn't match pattern: " + email);
+                    Toast.makeText(SignUp.this, "Invalid email", Toast.LENGTH_SHORT).show();
                 }
             }
         });
