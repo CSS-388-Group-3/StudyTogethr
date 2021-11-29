@@ -9,13 +9,6 @@ import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -26,6 +19,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
 import com.codepath.cs388.studytogethr.Post;
 import com.codepath.cs388.studytogethr.R;
@@ -192,7 +191,7 @@ public class ComposeFragment extends Fragment {
 
             // Load the selected image into a preview
             ivPostImage.setImageBitmap(selectedImage);
-        } 
+        }
     }
 
     private File getPhotoFileUri(String fileName) {
