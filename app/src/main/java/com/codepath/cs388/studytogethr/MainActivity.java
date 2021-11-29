@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.codepath.cs388.studytogethr.fragments.ComposeFragment;
 import com.codepath.cs388.studytogethr.fragments.PostsFragment;
 import com.codepath.cs388.studytogethr.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_compose:
                         Toast.makeText(MainActivity.this, "Compose Notes!", Toast.LENGTH_SHORT).show();
                         //fragment = new ComposeFragment();
-                        fragment = new ProfileFragment();
+                        fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
                     default:

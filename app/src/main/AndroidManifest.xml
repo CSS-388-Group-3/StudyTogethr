@@ -16,6 +16,15 @@
         <activity
             android:name=".SignUp"
             android:exported="false" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.codepath.fileprovider.StudyTogethr"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider" />
+        </provider>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
