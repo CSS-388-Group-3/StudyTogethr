@@ -5,11 +5,14 @@ import static android.app.Activity.RESULT_OK;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
@@ -32,15 +35,18 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ComposeFragment extends Fragment {
 
     public static final String TAG = "ComposeFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
+    public static final int PICK_PHOTO_CODE = 1046;
     private EditText etDescription;
     private EditText etClassProfessor;
     private EditText etClassFolder;
     private Button btnCaptureImage;
+    private Button btnSelectImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
     private File photoFile;
@@ -65,6 +71,7 @@ public class ComposeFragment extends Fragment {
         etClassProfessor = view.findViewById(R.id.etClassProfessor);
         etClassFolder = view.findViewById(R.id.etClassFolder);
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
+        btnSelectImage = view.findViewById(R.id.btnSelectImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
 
@@ -74,12 +81,22 @@ public class ComposeFragment extends Fragment {
                 launchCamera();
             }
         });
+        btnSelectImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPickPhoto(v);
+            }
+        });
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String description = etDescription.getText().toString();
                 String class_professor = etClassProfessor.getText().toString();
                 String class_folder = etClassFolder.getText().toString();
+                if(photoFile==null || ivPostImage.getDrawable() == null) {
+                    Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(description.isEmpty()){
                     Toast.makeText(getContext(), "Description cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
@@ -90,10 +107,6 @@ public class ComposeFragment extends Fragment {
                 }
                 if(class_folder.isEmpty()){
                     Toast.makeText(getContext(), "Folder not specified", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(photoFile==null ||  ivPostImage.getDrawable() == null) {
-                    Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -121,6 +134,18 @@ public class ComposeFragment extends Fragment {
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
     }
+    public void onPickPhoto(View view) {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
+    }
     private void savePost(String description, String course_professor, String course_folder, ParseUser currentUser, File photoFile) {
         Post post = new Post();
         post.setDescription(description);
@@ -144,6 +169,7 @@ public class ComposeFragment extends Fragment {
             }
         });
     }
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -158,6 +184,15 @@ public class ComposeFragment extends Fragment {
                 Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
+        if ((data != null) && requestCode == PICK_PHOTO_CODE) {
+            Uri photoUri = data.getData();
+
+            // Load the image located at photoUri into selectedImage
+            Bitmap selectedImage = loadFromUri(photoUri);
+
+            // Load the selected image into a preview
+            ivPostImage.setImageBitmap(selectedImage);
+        } 
     }
 
     private File getPhotoFileUri(String fileName) {
@@ -173,5 +208,23 @@ public class ComposeFragment extends Fragment {
 
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
+    }
+    @RequiresApi(api = Build.VERSION_CODES.P)
+    public Bitmap loadFromUri(Uri photoUri) {
+        Bitmap image = null;
+        try {
+            // check version of Android on device
+            if(Build.VERSION.SDK_INT > 27){
+                // on newer versions of Android, use the new decodeBitmap method
+                ImageDecoder.Source source = ImageDecoder.createSource(this.getContext().getContentResolver(), photoUri);
+                image = ImageDecoder.decodeBitmap(source);
+            } else {
+                // support older versions of Android by using getBitmap
+                image = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), photoUri);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
     }
 }

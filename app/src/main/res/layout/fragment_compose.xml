@@ -12,12 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         tools:srcCompat="@tools:sample/avatars" />
+
     <Button
         android:id="@+id/btnCaptureImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#3897f0"
+        android:backgroundTint="@color/njit_blue"
         android:text="Take Picture" />
+    <Button
+        android:id="@+id/btnSelectImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/njit_blue"
+        android:text="Select Picture" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -47,7 +54,7 @@
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#73D10F"
+        android:backgroundTint="@color/njit_red"
         android:text="Submit" />
 
 </LinearLayout>
