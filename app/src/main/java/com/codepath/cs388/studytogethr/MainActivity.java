@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.codepath.cs388.studytogethr.fragments.PostsFragment;
 import com.codepath.cs388.studytogethr.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_classList:
                         Toast.makeText(MainActivity.this, "Class List!", Toast.LENGTH_SHORT).show();
                         //fragment = new ClassListFragment();
-                        fragment = new ProfileFragment();
+                        fragment = new PostsFragment();
                         break;
                     case R.id.action_compose:
                         Toast.makeText(MainActivity.this, "Compose Notes!", Toast.LENGTH_SHORT).show();
