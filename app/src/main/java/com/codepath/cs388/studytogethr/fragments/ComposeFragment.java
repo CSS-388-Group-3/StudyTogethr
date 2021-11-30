@@ -192,7 +192,7 @@ public class ComposeFragment extends Fragment {
 
             // Load the selected image into a preview
             ivPostImage.setImageBitmap(selectedImage);
-        } 
+        }
     }
 
     private File getPhotoFileUri(String fileName) {
