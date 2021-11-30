@@ -49,7 +49,9 @@ public class ProfileFragment extends Fragment {
 
         tvUsername.setText(user.getUsername());
         tvEmail.setText("Email: " + user.getEmail());
-        tvRole.setText("Role: ");
+        String role = (String) user.get("role");
+        tvRole.setText("Role: " + role);
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
