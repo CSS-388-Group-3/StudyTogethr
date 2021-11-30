@@ -234,3 +234,7 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
     Post post = new Post();
     post.setDescription(description);
     post.set
+
+
+## Sprint 2 Build progress
+<img src= https://i.imgur.com/Smi3qSs.gif width=600>
