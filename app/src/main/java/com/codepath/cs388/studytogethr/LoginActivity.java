@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String  TAG = "LoginActivity";
@@ -75,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goSignup(){
-        Intent i = new Intent(this, SignUp.class);
+        Intent i = new Intent(this, SignUpActivity.class);
         i.putExtra("username",  etUsername.getText().toString());
         startActivity(i);
         finish();

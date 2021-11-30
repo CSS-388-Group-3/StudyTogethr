@@ -15,7 +15,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     private Button btnSignUp;
     private Button btnLogin;
     private EditText etUsername;
@@ -60,7 +60,7 @@ public class SignUp extends AppCompatActivity {
                         user.put("role", "professor");
                     }
                     else {
-                        Toast.makeText(SignUp.this, "Please select a role", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, "Please select a role", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
@@ -69,11 +69,11 @@ public class SignUp extends AppCompatActivity {
                         public void done(ParseException e) {
                             if (e != null) {
                                 Log.e(TAG, "Error signing up user", e);
-                                Toast.makeText(SignUp.this, "User already exists", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             Log.i(TAG, "Sign up was successful");
-                            Toast.makeText(SignUp.this, "Signup Successful. Please login", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "Signup Successful. Please login", Toast.LENGTH_SHORT).show();
                             etEmail.getText().clear();
                             etUsername.getText().clear();
                             etPassword.getText().clear();
@@ -82,7 +82,7 @@ public class SignUp extends AppCompatActivity {
                 }
                 else {
                     Log.e(TAG, "email doesn't match pattern: " + email);
-                    Toast.makeText(SignUp.this, "Invalid email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Invalid email", Toast.LENGTH_SHORT).show();
                 }
             }
         });

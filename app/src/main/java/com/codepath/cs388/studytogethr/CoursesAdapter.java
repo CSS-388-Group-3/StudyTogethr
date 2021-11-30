@@ -2,11 +2,11 @@ package com.codepath.cs388.studytogethr;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,7 +52,9 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.ViewHold
             btnCourse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "You clicked on " + thisCourse, Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(context, PostsListActivity.class);
+                    i.putExtra("course", thisCourse);
+                    context.startActivity(i);
                 }
             });
         }

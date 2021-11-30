@@ -46,7 +46,13 @@ public class Post extends ParseObject {
     }
     public void setFolder(String course_folder){put(KEY_FOLDER, course_folder);}
 
-
-
-
 }
+
+/*
+* 13 pro max cases
+*
+*Rebel series gen 2
+* Dbrand grip
+* UAG monarch series
+*
+*/
