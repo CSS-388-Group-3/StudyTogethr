@@ -31,7 +31,7 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 - [x] Back4app backend
 - [X] Create different classes-professors list
 - [X] Upload pictures of notes to the classes
-- [ ] Organize/Display notes by category within classes
+- [x] Organize/Display notes by category within classes
 - [X] Navigation bar to go between class list, compose, and profile
 - [x] Professor/student roles
 - [ ] Lock app during exam time
@@ -39,7 +39,7 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 
 **Optional Nice-to-have Stories**
 
-- [ ] Verify njit email
+- [x] Verify njit email
 - [ ] Report system
 - [ ] Upload other file types (voice/video recording, files)
 - [ ] Upload multiple files
@@ -237,4 +237,4 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 
 
 ## Sprint 2 Build progress
-<img src= https://i.imgur.com/Smi3qSs.gif width=600>
+<img src= sprint2.gif width=600>
