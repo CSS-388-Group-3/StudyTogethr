@@ -29,10 +29,9 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 
 - [X] Email verification
 - [x] Back4app backend
-- [ ] Create different classes categories
-- [ ] Professor categories within class categories
-- [ ] Organize notes by category
-- [ ] Upload pictures of notes to the classes
+- [X] Create different classes-professors list
+- [X] Upload pictures of notes to the classes
+- [ ] Organize/Display notes by category within classes
 - [X] Navigation bar to go between class list, compose, and profile
 - [ ] Professor/student roles
 - [ ] Lock app during exam time
@@ -234,24 +233,4 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
     ```Java
     Post post = new Post();
     post.setDescription(description);
-    post.setImage(new ParseFile(photoFile));
-    //set other post attributes
-    post.saveInBackground(new SaveCallback() {
-        @Override
-        public void done(ParseException e) {
-            if (e != null) {
-                //unsuccessful post save
-            }
-                //Successful post save
-                //reset other post attributes
-	              //go to posts stream 
-        }
-    });
-    ```
-* Profile-Logout
-  ```Java
-  ParseUser.logOut();
-  ParseUser currentUser = ParseUser.getCurrentUser();
-  //Go to Login screen
-  //Logout successful
-  ```
+    post.set
