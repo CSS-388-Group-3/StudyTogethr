@@ -48,11 +48,3 @@ public class Post extends ParseObject {
 
 }
 
-/*
-* 13 pro max cases
-*
-*Rebel series gen 2
-* Dbrand grip
-* UAG monarch series
-*
-*/
