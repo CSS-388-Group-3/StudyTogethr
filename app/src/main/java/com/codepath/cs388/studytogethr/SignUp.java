@@ -1,7 +1,5 @@
 package com.codepath.cs388.studytogethr;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -21,6 +21,8 @@ public class SignUp extends AppCompatActivity {
     private EditText etUsername;
     private EditText etEmail;
     private EditText etPassword;
+    private RadioButton rbStudent;
+    private RadioButton rbProfessor;
     public static final String TAG = "SignUpActivity ";
 
     @Override
@@ -32,6 +34,9 @@ public class SignUp extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        rbStudent = findViewById(R.id.rbStudent);
+        rbProfessor = findViewById(R.id.rbProfessor);
+
 
         Intent i = getIntent();
         etUsername.setText(i.getStringExtra("username"));
@@ -41,11 +46,24 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 String email = etEmail.getText().toString();
                 String emailPattern = "[a-zA-Z0-9._-]+@njit.edu";
+                Log.i(TAG, String.valueOf(rbProfessor.isChecked()));
+                Log.i(TAG, String.valueOf(rbStudent.isChecked()));
                 if (email.matches(emailPattern) && email.length() > 0) {
                     ParseUser user = new ParseUser();
                     user.setEmail(email);
                     user.setUsername(etUsername.getText().toString());
                     user.setPassword(etPassword.getText().toString());
+
+                    if (rbStudent.isChecked()) {
+                        user.put("role", "student");
+                    } else if (rbProfessor.isChecked()){
+                        user.put("role", "professor");
+                    }
+                    else {
+                        Toast.makeText(SignUp.this, "Please select a role", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     user.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {

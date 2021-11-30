@@ -36,19 +36,20 @@
         android:inputType="textPassword" />
 
     <RadioGroup
+        android:id="@+id/rgRole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radio_pirates"
+            android:id="@+id/rbStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/njit_red"
             android:text="Student" />
 
         <RadioButton
-            android:id="@+id/radio_ninjas"
+            android:id="@+id/rbProfessor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/njit_red"
