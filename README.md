@@ -39,7 +39,7 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 
 **Optional Nice-to-have Stories**
 
-- [x] Verify njit email
+- [ ] Verify njit email
 - [ ] Report system
 - [ ] Upload other file types (voice/video recording, files)
 - [ ] Upload multiple files
