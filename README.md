@@ -34,7 +34,7 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
 - [x] Organize/Display notes by category within classes
 - [X] Navigation bar to go between class list, compose, and profile
 - [x] Professor/student roles
-- [ ] Lock app during exam time
+- [x] Lock app during exam time
 
 
 **Optional Nice-to-have Stories**
@@ -234,6 +234,9 @@ StudyTogethr is an app for students to collaborate and share their class notes. 
     Post post = new Post();
     post.setDescription(description);
     post.set
+    
+## Sprint 3 Build progress
+<img src= sprint3.gif width=300>
     
 ## Sprint 2 Build progress
 <img src= sprint2.gif width=300>
