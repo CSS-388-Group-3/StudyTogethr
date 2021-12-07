@@ -14,11 +14,13 @@
         <entry key="..\:/Users/Cristian/Desktop/Codepath/StudyTogethr/app/src/main/res/layout/fragment_profile.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/Cristian/Desktop/Codepath/StudyTogethr/app/src/main/res/layout/item_post.xml" value="0.32708333333333334" />
         <entry key="..\:/Users/Cristian/Desktop/Codepath/StudyTogethr/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/Yezen/StudioProjects/StudyTogethr/app/src/main/res/layout/activity_login.xml" value="0.378125" />
+        <entry key="..\:/Users/Yezen/StudioProjects/StudyTogethr/app/src/main/res/layout/fragment_profile.xml" value="0.6" />
         <entry key="app/src/main/res/layout/fragment_compose.xml" value="0.3098958333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

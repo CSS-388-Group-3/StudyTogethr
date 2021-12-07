@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:textAlignment="center"
-        tools:text="Emaill: student@njit.edu" />
+        tools:text="Email: student@njit.edu" />
 
     <TextView
         android:id="@+id/tvRole"
@@ -33,6 +33,29 @@
         android:layout_marginTop="15dp"
         android:textAlignment="center"
         tools:text="Role: Student" />
+
+    <EditText
+        android:id="@+id/etClassName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Class Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Time (In Hours)"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnLockExam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lock Class" />
+
 
     <Button
         android:id="@+id/btnLogout"
