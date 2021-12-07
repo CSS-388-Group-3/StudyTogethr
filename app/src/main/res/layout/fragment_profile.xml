@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="125dp"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="25dp"
         android:textStyle="bold"
         tools:text="Student Username" />
@@ -33,6 +34,14 @@
         android:layout_marginTop="15dp"
         android:textAlignment="center"
         tools:text="Role: Student" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exam Lock:"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/etClassName"
@@ -69,7 +78,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="85dp"
         android:backgroundTint="@color/njit_blue"
         android:text="logout"
         android:textAlignment="center" />
