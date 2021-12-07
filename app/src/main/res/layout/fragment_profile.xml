@@ -43,19 +43,26 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etTime"
+        android:id="@+id/etStartTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Time (In Hours)"
+        android:hint="Start Time"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Duration (In Hours)"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btnLockExam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lock Class" />
-
+        android:text="Submit" />
 
     <Button
         android:id="@+id/btnLogout"
