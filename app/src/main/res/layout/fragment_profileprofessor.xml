@@ -35,44 +35,13 @@
         android:textAlignment="center"
         tools:text="Role: Student" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Exam Lock:"
-        android:textColor="@color/black"
-        android:textSize="22sp" />
-
-    <EditText
-        android:id="@+id/etClassName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Class Name"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etStartTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Start Time"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Duration (In Hours)"
-        android:inputType="textPersonName" />
-
     <Button
-        android:id="@+id/btnLockExam"
-        android:layout_width="match_parent"
+        android:id="@+id/btnExamLock"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Set Exam Lock" />
 
     <Button
         android:id="@+id/btnLogout"

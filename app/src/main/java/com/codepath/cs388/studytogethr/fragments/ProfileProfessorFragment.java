@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.codepath.cs388.studytogethr.ExamLockActivity;
 import com.codepath.cs388.studytogethr.LoginActivity;
 import com.codepath.cs388.studytogethr.R;
 import com.parse.ParseUser;
@@ -22,6 +23,7 @@ import com.parse.ParseUser;
  */
 public class ProfileProfessorFragment extends Fragment {
     public static final String TAG = "ProfileProfessorFragment";
+    private Button btnExamLock;
     Button btnLogout;
     TextView tvUsername;
     TextView tvEmail;
@@ -45,12 +47,21 @@ public class ProfileProfessorFragment extends Fragment {
         tvUsername = view.findViewById(R.id.tvUsername);
         tvEmail = view.findViewById(R.id.tvEmail);
         tvRole = view.findViewById(R.id.tvRole);
+        btnExamLock = view.findViewById(R.id.btnExamLock);
         btnLogout = view.findViewById(R.id.btnLogout);
 
         tvUsername.setText(user.getUsername());
         tvEmail.setText("Email: " + user.getEmail());
         String role = (String) user.get("role");
         tvRole.setText("Role: " + role);
+
+        btnExamLock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext().getApplicationContext(), ExamLockActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

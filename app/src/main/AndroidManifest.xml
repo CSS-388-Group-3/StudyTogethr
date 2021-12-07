@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyTogethr">
         <activity
+            android:name=".ExamLockActivity"
+            android:exported="true" />
+        <activity
             android:name=".PostsListActivity"
             android:exported="false" />
         <activity
