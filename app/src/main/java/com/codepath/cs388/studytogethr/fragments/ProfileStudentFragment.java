@@ -17,17 +17,15 @@ import com.codepath.cs388.studytogethr.LoginActivity;
 import com.codepath.cs388.studytogethr.R;
 import com.parse.ParseUser;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class ProfileFragment extends Fragment {
-    public static final String TAG = "ProfileFragment";
+public class ProfileStudentFragment extends Fragment {
+
+    public static final String TAG = "ProfileStudentFragment";
     Button btnLogout;
     TextView tvUsername;
     TextView tvEmail;
     TextView tvRole;
 
-    public ProfileFragment() {
+    public ProfileStudentFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +33,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_profilestudent, container, false);
     }
 
     @Override

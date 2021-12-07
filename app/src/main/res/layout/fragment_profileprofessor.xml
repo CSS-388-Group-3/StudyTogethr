@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.ProfileFragment">
+    tools:context=".fragments.ProfileProfessorFragment">
 
     <TextView
         android:id="@+id/tvUsername"
@@ -23,7 +23,7 @@
         android:id="@+id/tvEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="30dp"
         android:textAlignment="center"
         tools:text="Email: student@njit.edu" />
 
@@ -39,6 +39,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Exam Lock:"
         android:textColor="@color/black"
         android:textSize="22sp" />
@@ -78,7 +79,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="65dp"
         android:backgroundTint="@color/njit_blue"
         android:text="logout"
         android:textAlignment="center" />

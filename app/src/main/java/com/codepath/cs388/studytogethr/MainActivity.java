@@ -5,16 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.codepath.cs388.studytogethr.fragments.ComposeFragment;
 import com.codepath.cs388.studytogethr.fragments.PostsFragment;
-import com.codepath.cs388.studytogethr.fragments.ProfileFragment;
+import com.codepath.cs388.studytogethr.fragments.ProfileProfessorFragment;
+import com.codepath.cs388.studytogethr.fragments.ProfileStudentFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
@@ -28,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                ParseUser user = ParseUser.getCurrentUser();
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_classList:
@@ -43,7 +42,14 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                     default:
-                        fragment = new ProfileFragment();
+                        String role = (String) user.get("role");
+                        Toast.makeText(MainActivity.this, role, Toast.LENGTH_SHORT).show();
+                        if(role.equalsIgnoreCase("professor")){
+                            fragment = new ProfileProfessorFragment();
+                        }
+                        else{
+                            fragment = new ProfileStudentFragment();
+                        }
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
