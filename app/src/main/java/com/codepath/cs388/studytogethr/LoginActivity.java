@@ -63,10 +63,10 @@ public class LoginActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if ( e != null ) {
                     Log.e(TAG, "error with login", e);
-                    Toast.makeText(LoginActivity.this, "Failed to login", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Incorrect credentials", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
                 goMainActivity();
             }
         });

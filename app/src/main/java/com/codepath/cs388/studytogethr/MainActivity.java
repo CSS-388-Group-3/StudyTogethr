@@ -36,18 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_classList:
-                        Toast.makeText(MainActivity.this, "Class List!", Toast.LENGTH_SHORT).show();
-                        //fragment = new ClassListFragment();
                         fragment = new PostsFragment();
                         break;
                     case R.id.action_compose:
-                        Toast.makeText(MainActivity.this, "Compose Notes!", Toast.LENGTH_SHORT).show();
-                        //fragment = new ComposeFragment();
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
                     default:
-                        Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }
