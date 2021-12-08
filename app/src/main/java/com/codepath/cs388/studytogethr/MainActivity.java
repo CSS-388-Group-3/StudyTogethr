@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_profile:
                     default:
                         String role = (String) user.get("role");
-                        Toast.makeText(MainActivity.this, role, Toast.LENGTH_SHORT).show();
                         if(role.equalsIgnoreCase("professor")){
                             fragment = new ProfileProfessorFragment();
                         }

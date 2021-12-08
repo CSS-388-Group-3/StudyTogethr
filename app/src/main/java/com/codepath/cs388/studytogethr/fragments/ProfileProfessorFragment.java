@@ -23,7 +23,7 @@ import com.parse.ParseUser;
  */
 public class ProfileProfessorFragment extends Fragment {
     public static final String TAG = "ProfileProfessorFragment";
-    private Button btnExamLock;
+    Button btnExamLock;
     Button btnLogout;
     TextView tvUsername;
     TextView tvEmail;

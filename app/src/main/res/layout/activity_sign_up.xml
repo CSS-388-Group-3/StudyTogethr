@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_margin="30dp"
     android:orientation="vertical"
     tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Create Account"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="Username" />
+        android:hint="Username"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -24,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="Email" />
+        android:hint="Email"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -33,13 +44,33 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textSize="16sp" />
 
     <RadioGroup
         android:id="@+id/rgRole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Select your role:"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
         <RadioButton
             android:id="@+id/rbStudent"
@@ -58,8 +89,9 @@
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="match_parent"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_weight="1"
         android:backgroundTint="@color/njit_blue"
         android:text="register" />
@@ -68,6 +100,25 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
         android:layout_weight="1"
-        android:text="Login" />
+        android:background="@android:color/transparent"
+        android:capitalize="none"
+        android:fontFamily="@font/arsenal"
+        android:text="Already have an account? Sign in"
+        android:textAllCaps="false"
+        android:textColor="#1E88E5" />
+    <!--
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:background="@android:color/transparent"
+        android:capitalize="none"
+        android:fontFamily="@font/arsenal"
+        android:text="Dont have an account? Register here"
+        android:textAllCaps="false"
+        android:textColor="#1E88E5" />
+    -->
 </LinearLayout>

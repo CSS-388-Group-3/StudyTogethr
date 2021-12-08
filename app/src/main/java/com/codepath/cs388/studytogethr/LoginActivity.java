@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Try Again or Verify Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(LoginActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Welcome, "+user.getUsername()+"!", Toast.LENGTH_SHORT).show();
                 goMainActivity();
             }
         });

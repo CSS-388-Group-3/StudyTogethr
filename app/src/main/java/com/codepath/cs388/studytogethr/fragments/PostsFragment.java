@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PostsFragment extends Fragment {
-    public static final String TAG = "PostsListActivity Fragment: ";
+    public static final String TAG = "PostsFragment";
     private RecyclerView rvCourses;
     protected CoursesAdapter adapter;
     protected List<String> allCourses;

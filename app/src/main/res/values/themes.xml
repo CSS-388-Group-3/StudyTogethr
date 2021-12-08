@@ -3,6 +3,8 @@
     <style name="Theme.StudyTogethr" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/njit_red</item>
+        <item name="fontFamily">@font/architects_daughter</item>
+        <item name="android:textStyle">bold</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

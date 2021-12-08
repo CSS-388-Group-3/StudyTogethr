@@ -1,5 +1,6 @@
 package com.codepath.cs388.studytogethr;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.parse.ParseException;
@@ -21,6 +24,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etEmail;
     private EditText etPassword;
+    private EditText etConfirmPassword;
+    private RadioGroup rgRole;
     private RadioButton rbStudent;
     private RadioButton rbProfessor;
     public static final String TAG = "SignUpActivity ";
@@ -33,7 +38,9 @@ public class SignUpActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        rgRole = findViewById(R.id.rgRole);
         rbStudent = findViewById(R.id.rbStudent);
         rbProfessor = findViewById(R.id.rbProfessor);
 
@@ -52,7 +59,17 @@ public class SignUpActivity extends AppCompatActivity {
                     ParseUser user = new ParseUser();
                     user.setEmail(email);
                     user.setUsername(etUsername.getText().toString());
-                    user.setPassword(etPassword.getText().toString());
+                    if(etPassword.length()!=0) {
+                        if (etConfirmPassword.getText().toString().matches(etPassword.getText().toString())) {
+                            user.setPassword(etPassword.getText().toString());
+                        } else {
+                            Toast.makeText(SignUpActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else{
+                        Toast.makeText(SignUpActivity.this, "Please enter a password", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     if (rbStudent.isChecked()) {
                         user.put("role", "student");
@@ -69,14 +86,27 @@ public class SignUpActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             if (e != null) {
                                 Log.e(TAG, "Error signing up user", e);
-                                Toast.makeText(SignUpActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "User already exists.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                             Log.i(TAG, "Sign up was successful");
-                            Toast.makeText(SignUpActivity.this, "Signup Successful. Please login", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "Signup Successful.", Toast.LENGTH_SHORT).show();
                             etEmail.getText().clear();
                             etUsername.getText().clear();
                             etPassword.getText().clear();
+                            etConfirmPassword.getText().clear();
+                            rgRole.clearCheck();
+
+                            AlertDialog alertDialog = new AlertDialog.Builder(SignUpActivity.this).create();
+                            alertDialog.setTitle("Thanks for signing up!");
+                            alertDialog.setMessage("Please verify your account via email before logging in. ");
+                            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                            alertDialog.show();
                         }
                     });
                 }
