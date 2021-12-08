@@ -58,7 +58,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         public void bind(Post post) {
             tvDescription.setText(post.getDescription());
-            tvUsername.setText(post.getUser().getUsername());
+            if(post.getUser()==null){
+                tvUsername.setText("[deleted user]");
+            }
+            else{
+                tvUsername.setText(post.getUser().getUsername());
+            }
+
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);

@@ -9,6 +9,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class PostsListActivity extends AppCompatActivity {
 
-    public static final String TAG = "PostsActivity";
+    public static final String TAG = "PostsListActivity";
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
@@ -58,7 +59,12 @@ public class PostsListActivity extends AppCompatActivity {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.whereEqualTo(Post.KEY_COURSE, thisCourse);
         query.include(Post.KEY_USER);
-        query.setLimit(20);
+        try {
+            int count  =  query.count();
+            query.setLimit(count);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }// else default 100 for back4app
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
