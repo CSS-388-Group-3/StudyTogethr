@@ -9,6 +9,7 @@
         android:id="@+id/btnCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/njit_blue"
         android:text="CourseCode"
         android:textColor="@color/white"
         tools:layout_editor_absoluteX="62dp"
