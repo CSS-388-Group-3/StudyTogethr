@@ -62,7 +62,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 tvUsername.setText("[deleted user]");
             }
             else{
-                tvUsername.setText(post.getUser().getUsername());
+                tvUsername.setText(post.getUser().getUsername() + " [" + post.getUser().get("role") + "]");
             }
 
             ParseFile image = post.getImage();
