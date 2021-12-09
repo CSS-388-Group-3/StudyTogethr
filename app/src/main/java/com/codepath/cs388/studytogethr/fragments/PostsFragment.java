@@ -58,7 +58,12 @@ public class PostsFragment extends Fragment {
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_COURSE);
-        query.setLimit(20);
+        try {
+            int count  =  query.count();
+            query.setLimit(count);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }// else default 100 for back4app
         query.addDescendingOrder(Post.KEY_COURSE);
         query.findInBackground(new FindCallback<Post>() {
             @Override
