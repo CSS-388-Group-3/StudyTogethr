@@ -2,6 +2,7 @@ package com.codepath.cs388.studytogethr;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -90,7 +92,6 @@ public class SignUpActivity extends AppCompatActivity {
                                 return;
                             }
                             Log.i(TAG, "Sign up was successful");
-                            Toast.makeText(SignUpActivity.this, "Signup Successful.", Toast.LENGTH_SHORT).show();
                             etEmail.getText().clear();
                             etUsername.getText().clear();
                             etPassword.getText().clear();
@@ -104,9 +105,13 @@ public class SignUpActivity extends AppCompatActivity {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
+                                            Intent i = new Intent("android.intent.action.VIEW",
+                                                            Uri.parse("http://www.gmail.com/"));
+                                            startActivity(i);
                                         }
                                     });
                             alertDialog.show();
+                            ParseUser.logOut();
                         }
                     });
                 }
