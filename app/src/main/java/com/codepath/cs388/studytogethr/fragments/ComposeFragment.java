@@ -44,40 +44,32 @@ public class ComposeFragment extends Fragment {
     public static final String TAG = "ComposeFragment";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public static final int PICK_PHOTO_CODE = 1046;
+    private File photoFile;
+    public String photoFileName = "photo.jpg";
+    private ImageView ivPostImage;
+    private Button btnCaptureImage;
+    private Button btnSelectImage;
     private EditText etDescription;
     private EditText etClassProfessor;
     private Spinner sClassFolder;
-    private Button btnCaptureImage;
-    private Button btnSelectImage;
-    private ImageView ivPostImage;
     private Button btnSubmit;
-    private File photoFile;
-    public String photoFileName = "photo.jpg";
 
-    public ComposeFragment() {
-        // Required empty public constructor
-    }
+    public ComposeFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_compose, container, false);
     }
-    // This event is triggered soon after onCreateView().
-    // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ivPostImage = view.findViewById(R.id.ivPostImage);
         etDescription = view.findViewById(R.id.etDescription);
         etClassProfessor = view.findViewById(R.id.etClassProfessor);
-        sClassFolder = view.findViewById(R.id.sClassFolder);
-        btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
-        btnSelectImage = view.findViewById(R.id.btnSelectImage);
-        ivPostImage = view.findViewById(R.id.ivPostImage);
-        btnSubmit = view.findViewById(R.id.btnSubmit);
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
+    //SPINNER: folder selection
+        sClassFolder = view.findViewById(R.id.sClassFolder);
         ArrayAdapter<CharSequence> arrAdapter = ArrayAdapter.createFromResource(this.getActivity(),
                 R.array.folders_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -85,18 +77,26 @@ public class ComposeFragment extends Fragment {
         // Apply the adapter to the spinner
         sClassFolder.setAdapter(arrAdapter);
 
+    //BUTTON: capture image
+        btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchCamera();
             }
         });
+
+    //BUTTON: select image
+        btnSelectImage = view.findViewById(R.id.btnSelectImage);
         btnSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onPickPhoto(v);
             }
         });
+
+    //BUTTON: submit
+        btnSubmit = view.findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,32 +125,28 @@ public class ComposeFragment extends Fragment {
             }
         });
     }
+
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Create a File reference for future access
         photoFile = getPhotoFileUri(photoFileName);
-
         // wrap File object into a content provider
-        // required for API >= 24
-        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
         Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider.StudyTogethr", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
-
-        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
-        // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getContext().getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
     }
+
     public void onPickPhoto(View view) {
         // Create intent for picking a photo from the gallery
         Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        
+        photoFile = getPhotoFileUri(photoFileName);
 
-        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
-        // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getContext().getPackageManager()) != null) {
             // Bring up gallery to select a photo
             startActivityForResult(intent, PICK_PHOTO_CODE);
@@ -183,6 +179,7 @@ public class ComposeFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
@@ -219,18 +216,18 @@ public class ComposeFragment extends Fragment {
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
-    @RequiresApi(api = Build.VERSION_CODES.P)
+
     public Bitmap loadFromUri(Uri photoUri) {
         Bitmap image = null;
         try {
             // check version of Android on device
-            if(Build.VERSION.SDK_INT > 27){
+            if (Build.VERSION.SDK_INT > 27) {
                 // on newer versions of Android, use the new decodeBitmap method
-                ImageDecoder.Source source = ImageDecoder.createSource(this.getContext().getContentResolver(), photoUri);
+                ImageDecoder.Source source = ImageDecoder.createSource(getContext().getContentResolver(), photoUri);
                 image = ImageDecoder.decodeBitmap(source);
             } else {
                 // support older versions of Android by using getBitmap
-                image = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), photoUri);
+                image = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), photoUri);
             }
         } catch (IOException e) {
             e.printStackTrace();
