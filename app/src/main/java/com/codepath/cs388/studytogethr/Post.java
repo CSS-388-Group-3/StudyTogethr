@@ -13,6 +13,7 @@ public class Post extends ParseObject {
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_COURSE = "class_professor";
     public static final String KEY_FOLDER = "class_folder";
+    public static final String KEY_DISPLAY = "display";
 
 
     public String getDescription (){
@@ -45,6 +46,9 @@ public class Post extends ParseObject {
         return getString(KEY_FOLDER);
     }
     public void setFolder(String course_folder){put(KEY_FOLDER, course_folder);}
+
+    public Boolean getDisplay(){ return getBoolean(KEY_DISPLAY); }
+    public void setDisplay(Boolean display){put(KEY_DISPLAY, display);}
 
 }
 

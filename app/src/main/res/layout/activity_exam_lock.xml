@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="50dp"
     tools:context=".ExamLockActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
         android:text="Exam Lock:"
         android:textColor="@color/black"
@@ -20,33 +22,34 @@
         android:id="@+id/etClassName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Class Name"
         android:inputType="textPersonName"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/etStartTime"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnExamLock"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Start Time"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Duration (In Hours)"
-        android:inputType="textPersonName" />
+        android:layout_below="@+id/etClassName"
+        android:layout_gravity="end"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/btnExamUnlock"
+        android:text="Lock" />
 
     <Button
-        android:id="@+id/btnExamLockSubmit"
-        android:layout_width="100dp"
+        android:id="@+id/btnExamUnlock"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/etClassName"
+        android:layout_alignParentStart="true"
         android:layout_gravity="end"
-        android:layout_marginEnd="10dp"
-        android:text="Submit" />
-
-</LinearLayout>
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/njit_blue"
+        android:text="Unlock" />
+</RelativeLayout>

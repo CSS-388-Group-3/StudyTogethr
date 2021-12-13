@@ -1,5 +1,6 @@
 package com.codepath.cs388.studytogethr.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.codepath.cs388.studytogethr.ExamLockActivity;
 import com.codepath.cs388.studytogethr.Post;
 import com.codepath.cs388.studytogethr.CoursesAdapter;
 import com.codepath.cs388.studytogethr.R;
@@ -73,10 +75,12 @@ public class PostsFragment extends Fragment {
                     return;
                 }
                 Log.i(TAG, "Got back: " + posts);
-                for (Post post : posts){
-                    Log.i(TAG, "Course: " + post.getCourse() + " user: " + post.getUser());
-                    if ( !allCourses.contains( post.getCourse() ) ){
-                        allCourses.add(post.getCourse());
+                for (Post post : posts) {
+                    if (post.getBoolean("display")) {
+                        Log.i(TAG, "Course: " + post.getCourse() + " user: " + post.getUser());
+                        if (!allCourses.contains(post.getCourse())) {
+                            allCourses.add(post.getCourse());
+                        }
                     }
                 }
                 adapter.notifyDataSetChanged();
