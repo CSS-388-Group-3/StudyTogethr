@@ -15,9 +15,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,7 +46,7 @@ public class ComposeFragment extends Fragment {
     public static final int PICK_PHOTO_CODE = 1046;
     private EditText etDescription;
     private EditText etClassProfessor;
-    private EditText etClassFolder;
+    private Spinner sClassFolder;
     private Button btnCaptureImage;
     private Button btnSelectImage;
     private ImageView ivPostImage;
@@ -68,11 +71,19 @@ public class ComposeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         etDescription = view.findViewById(R.id.etDescription);
         etClassProfessor = view.findViewById(R.id.etClassProfessor);
-        etClassFolder = view.findViewById(R.id.etClassFolder);
+        sClassFolder = view.findViewById(R.id.sClassFolder);
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         btnSelectImage = view.findViewById(R.id.btnSelectImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> arrAdapter = ArrayAdapter.createFromResource(this.getActivity(),
+                R.array.folders_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        arrAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        sClassFolder.setAdapter(arrAdapter);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +102,7 @@ public class ComposeFragment extends Fragment {
             public void onClick(View view) {
                 String description = etDescription.getText().toString();
                 String class_professor = etClassProfessor.getText().toString();
-                String class_folder = etClassFolder.getText().toString();
+                String class_folder = sClassFolder.getSelectedItem().toString();
                 if(photoFile==null || ivPostImage.getDrawable() == null) {
                     Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
                     return;
@@ -105,7 +116,7 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
                 if(class_folder.isEmpty()){
-                    Toast.makeText(getContext(), "Folder not specified", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Must select a folder", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -162,7 +173,7 @@ public class ComposeFragment extends Fragment {
                 Log.i(TAG, "Post save was successful!!");
                 etDescription.setText("");
                 etClassProfessor.setText("");
-                etClassFolder.setText("");
+                sClassFolder.setSelection(0);
                 ivPostImage.setImageResource(0);
                 Toast.makeText(getContext(), "Posted!", Toast.LENGTH_SHORT).show();
             }

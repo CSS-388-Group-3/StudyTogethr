@@ -6,16 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".PostsListActivity">
 
+    <Spinner
+        android:id="@+id/sFolders"
+        android:layout_width="180dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:dropDownSelector="@color/njit_blue"
+        android:foregroundGravity="right"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textEnd"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/sFolders"
+        android:background="#F1F1F1">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPosts"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp" />
+            android:padding="5dp" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

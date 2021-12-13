@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,13 +46,14 @@
             android:hint="Class-Professor"
             android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/etClassFolder"
+        <Spinner
+            android:id="@+id/sClassFolder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Class Folder"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:spinnerMode="dialog" />
 
         <Button
             android:id="@+id/btnSubmit"
